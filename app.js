@@ -156,7 +156,8 @@ function displayPerson(person) {
 function findPersonFamily(person, people){
   
   let spouseId = person.currentSpouse;
-  spouseId = data.filter(function(el){
+  let foundSpouse; 
+  foundSpouse = people.filter(function(el){
     if (spouseId === el.id){
       return true;
   }
@@ -164,12 +165,7 @@ function findPersonFamily(person, people){
       return false;
   }})
 
-  return person.firstName + " " + person.lastName;
-  
-  function searchByID(people) {
-    let idSearch = spouseId;
-    displayPerson(person);
-  }
+  return `${foundSpouse[0].firstName}` + " " + `${foundSpouse[0].lastName}`;
 }
 
 /**
