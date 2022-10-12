@@ -166,6 +166,18 @@ function findPersonFamily(person, people){
   }})
 
   return `${foundSpouse[0].firstName}` + " " + `${foundSpouse[0].lastName}`;
+  
+  let parentId = person.parents;
+  let foundParents; 
+  foundParents = people.filter(function(el){
+    if (parentId === el.id){
+      return true;
+  }
+    else {
+      return false;
+  }})
+
+  return `${foundParents[0].firstName}` + " " + `${foundParents[0].lastName}`+ "," + ${foundParents[1].firstName}` + " " + `${foundParents[1].lastName}`;
 }
 
 /**
