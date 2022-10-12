@@ -1,4 +1,8 @@
 # Most_Wanted_Project
+# Team 
+Iggy Pierre
+Lucy Ruiz
+Michael Thompson
 
 Tech Stack: JavaScript
 
