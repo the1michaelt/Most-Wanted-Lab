@@ -170,10 +170,6 @@ function findPersonFamily(person, people){
     let idSearch = spouseId;
     displayPerson(person);
   }
-
-function displayPerson(person) {
-    let personInfo = `First Name: ${person.firstName}\n`;
-    personInfo += `Last Name: ${person.lastName}\n`;
 }
 
 /**
