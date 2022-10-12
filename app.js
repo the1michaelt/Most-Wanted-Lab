@@ -153,6 +153,29 @@ function displayPerson(person) {
 }
 // End of displayPerson()
 
+function findPersonFamily(person, people){
+  
+  let spouseId = person.currentSpouse;
+  spouseId = data.filter(function(el){
+    if (spouseId === el.id){
+      return true;
+  }
+    else {
+      return false;
+  }})
+
+  return person.firstName + " " + person.lastName;
+  
+  function searchByID(people) {
+    let idSearch = spouseId;
+    displayPerson(person);
+  }
+
+function displayPerson(person) {
+    let personInfo = `First Name: ${person.firstName}\n`;
+    personInfo += `Last Name: ${person.lastName}\n`;
+}
+
 /**
  * This function's purpose is twofold:
  * First, to generate a prompt with the value passed in to the question parameter.
