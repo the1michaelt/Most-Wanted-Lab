@@ -153,61 +153,10 @@ function displayPerson(person) {
 }
 // End of displayPerson()
 
-function findPersonFamily(person, people){
-  
-  // Found Spouse
-
-  let spouseId = person.currentSpouse;
-  let foundSpouse = people.filter(function(el){
-    if (spouseId === el.id){
-      return true;
-  }
-    else {
-      return false;
-  }})
-  
-  if(foundSpouse.length > 0){
-    displayPeople(foundSpouse)
-  }
-  else{
-    alert("No spouse found")
-  }
-
-  // Found Parent(s)
-
-  let parentId = person.parents;
-  let foundParents = people.filter(function(el){
-    if (parentId.includes(el.id)){
-      return true;
-  }
-    else {
-      return false;
-  }})
-
-  if(foundParents.length > 0){
-    displayPeople(foundParents)
-  }
-  else{
-    alert("No parent(s) found")
-  }
-
-  // Found Siblings
-
-  let personParents = person.parents;
-  let foundSiblings = people.filter(function(potentialSibling){
-    if (personParents.includes(potentialSibling.parents[0]) || personParents.includes(potentialSibling.parents[1])){
-       return true;
-      }
-    else {
-      return false;
-  }})
- 
-  if(foundSiblings.length > 0){
-    displayPeople(foundSiblings)
-  }
-  else{
-    alert("No siblings found")
-  }
+function findPersonFamily(person, people) {
+    run.findSpouse()
+    run.findParent()
+    run.findSibling()
 }
 
 /**
@@ -249,3 +198,67 @@ function chars(input) {
 
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
+
+{
+
+    // Found Spouse
+    function findSpouse(person, people) {
+        let spouseId = person.currentSpouse;
+        let foundSpouse = people.filter(function (el) {
+            if (spouseId === el.id) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        })
+    
+            if (foundSpouse.length > 0) {
+                displayPeople(foundSpouse)
+            }
+            else {
+                alert("No spouse found")
+            }
+        }
+    }
+    // Found Parent(s)
+function findParent() {
+        let parentId = person.parents;
+        let foundParents = people.filter(function (el) {
+            if (parentId.includes(el.id)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        })
+
+    
+        if (foundParents.length > 0) {
+            displayPeople(foundParents)
+        }
+        else {
+            alert("No parent(s) found")
+        }
+}
+
+    // Found Siblings
+function findSibling() {
+    let personParents = person.parents;
+    let foundSiblings = people.filter(function (potentialSibling) {
+        if (personParents.includes(potentialSibling.parents[0]) || personParents.includes(potentialSibling.parents[1])) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    })
+
+    if (foundSiblings.length > 0) {
+        displayPeople(foundSiblings)
+    }
+    else {
+        alert("No siblings found")
+    }
+}
+
