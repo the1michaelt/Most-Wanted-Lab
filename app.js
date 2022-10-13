@@ -154,10 +154,39 @@ function displayPerson(person) {
 // End of displayPerson()
 
 function findPersonFamily(person, people) {
-    findSpouse(person, people)
-    findParent(person, people)
-    findSibling(person, people)
+  findSpouse(person, people)
+  findParent(person, people)
+  findSibling(person, people)
 }
+// End of findPersonFamily()
+
+function findPersonDescendants(person, people){
+  findChildren(person, people)
+}
+
+function findChildren(person, people){
+  let childParent = person.id;
+  let foundChildren = people.filter(function (potentialChild) {
+    if (potentialChild.parents.includes(childParent)) {
+        return true;
+      }
+      else {
+        return false;
+      }
+  })
+
+  // function findGrandChildren(person, people){
+  //   let foundChildren
+  }
+
+  if (foundChildren.length > 0) {
+    displayPeople(foundChildren)
+  }
+  else {
+    alert("No child(ren) found")
+  }
+}
+
 
 /**
  * This function's purpose is twofold:
@@ -199,64 +228,67 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-    // Found Spouse
+// Found Spouse
+
 function findSpouse(person, people) {
-    let spouseId = person.currentSpouse;
-    let foundSpouse = people.filter(function (el) {
-        if (spouseId === el.id) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    })
+  let spouseId = person.currentSpouse;
+  let foundSpouse = people.filter(function (el) {
+      if (spouseId === el.id) {
+          return true;
+      }
+      else {
+          return false;
+      }
+  })
 
-        if (foundSpouse.length > 0) {
-            displayPeople(foundSpouse)
-        }
-        else {
-            alert("No spouse found")
-        }
-    }
+      if (foundSpouse.length > 0) {
+          displayPeople(foundSpouse)
+      }
+      else {
+          alert("No spouse found")
+      }
+  }
 
-    // Found Parent(s)
+// Found Parent(s)
+
 function findParent(person, people) {
-    let parentId = person.parents;
-    let foundParents = people.filter(function (el) {
-        if (parentId.includes(el.id)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    })
+  let parentId = person.parents;
+  let foundParents = people.filter(function (el) {
+      if (parentId.includes(el.id)) {
+          return true;
+      }
+      else {
+          return false;
+      }
+  })
 
 
-    if (foundParents.length > 0) {
-        displayPeople(foundParents)
-    }
-    else {
-        alert("No parent(s) found")
-    }
+  if (foundParents.length > 0) {
+      displayPeople(foundParents)
+  }
+  else {
+      alert("No parent(s) found")
+  }
 }
 
-    // Found Siblings
-function findSibling(person, people) {
-    let personParents = person.parents;
-    let foundSiblings = people.filter(function (potentialSibling) {
-        if (personParents.includes(potentialSibling.parents[0]) || personParents.includes(potentialSibling.parents[1])) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    })
+// Found Siblings
 
-    if (foundSiblings.length > 0) {
-        displayPeople(foundSiblings)
-    }
-    else {
-        alert("No siblings found")
-    }
+function findSibling(person, people) {
+  let personParents = person.parents;
+  let foundSiblings = people.filter(function (potentialSibling) {
+      if (personParents.includes(potentialSibling.parents[0]) || personParents.includes(potentialSibling.parents[1])) {
+          return true;
+      }
+      else {
+          return false;
+      }
+  })
+
+  if (foundSiblings.length > 0) {
+      displayPeople(foundSiblings)
+  }
+  else {
+      alert("No siblings found")
+  }
 }
 
