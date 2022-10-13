@@ -199,47 +199,45 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-{
-
     // Found Spouse
-    function findSpouse(person, people) {
-        let spouseId = person.currentSpouse;
-        let foundSpouse = people.filter(function (el) {
-            if (spouseId === el.id) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        })
-    
-            if (foundSpouse.length > 0) {
-                displayPeople(foundSpouse)
-            }
-            else {
-                alert("No spouse found")
-            }
-        }
-    }
-    // Found Parent(s)
-function findParent() {
-        let parentId = person.parents;
-        let foundParents = people.filter(function (el) {
-            if (parentId.includes(el.id)) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        })
-
-    
-        if (foundParents.length > 0) {
-            displayPeople(foundParents)
+function findSpouse(person, people) {
+    let spouseId = person.currentSpouse;
+    let foundSpouse = people.filter(function (el) {
+        if (spouseId === el.id) {
+            return true;
         }
         else {
-            alert("No parent(s) found")
+            return false;
         }
+    })
+
+        if (foundSpouse.length > 0) {
+            displayPeople(foundSpouse)
+        }
+        else {
+            alert("No spouse found")
+        }
+    }
+
+    // Found Parent(s)
+function findParent() {
+    let parentId = person.parents;
+    let foundParents = people.filter(function (el) {
+        if (parentId.includes(el.id)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    })
+
+
+    if (foundParents.length > 0) {
+        displayPeople(foundParents)
+    }
+    else {
+        alert("No parent(s) found")
+    }
 }
 
     // Found Siblings
