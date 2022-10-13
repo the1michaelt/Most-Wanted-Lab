@@ -175,18 +175,24 @@ function findChildren(person, people){
       }
   })
 
-  // function findGrandChildren(person, people){
-  //   let foundChildren
-  }
+  let childofChild = foundChildren.id;
+  let grandChild = people.map(function (potentialGrandChild) {
+    if (potentialGrandChild.foundParents.includes(childofChild)) {
+        return true;
+      }
+      else {
+        return false;
+      }
+  })
 
-  if (foundChildren.length > 0) {
-    displayPeople(foundChildren)
+  if (foundChildren.length > 0 && grandChild > 0) {
+    displayPeople(foundChildren, grandChild)
   }
   else {
-    alert("No child(ren) found")
+    alert("No descendant(s) found")
   }
 }
-
+//  array.concat
 
 /**
  * This function's purpose is twofold:
