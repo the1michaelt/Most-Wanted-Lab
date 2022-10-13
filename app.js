@@ -154,9 +154,9 @@ function displayPerson(person) {
 // End of displayPerson()
 
 function findPersonFamily(person, people) {
-    run.findSpouse()
-    run.findParent()
-    run.findSibling()
+    findSpouse(person, people)
+    findParent(person, people)
+    findSibling(person, people)
 }
 
 /**
@@ -220,7 +220,7 @@ function findSpouse(person, people) {
     }
 
     // Found Parent(s)
-function findParent() {
+function findParent(person, people) {
     let parentId = person.parents;
     let foundParents = people.filter(function (el) {
         if (parentId.includes(el.id)) {
@@ -241,7 +241,7 @@ function findParent() {
 }
 
     // Found Siblings
-function findSibling() {
+function findSibling(person, people) {
     let personParents = person.parents;
     let foundSiblings = people.filter(function (potentialSibling) {
         if (personParents.includes(potentialSibling.parents[0]) || personParents.includes(potentialSibling.parents[1])) {
