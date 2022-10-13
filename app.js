@@ -179,16 +179,28 @@ function findPersonFamily(person, people){
 
   // Found Siblings
 
-  let siblings = person.parents;
-  let foundSiblings = people.filter(function(el){
-    if (siblings.includes(parentId[0]) || el.person.includes(parentId[1])){
-      return true;
-  }
+  let personParents = person.parents;
+  let foundSiblings = people.filter(function(potentialSibling){
+    if (personParents.includes(potentialSibling.parents[0]) || personParents.includes(potentialSibling.parents[1])){
+       return true;
+      }
     else {
       return false;
   }})
+  console.log('foundSiblings: ', foundSiblings)
+  // if(foundSiblings.length > 0){
+  //   //alert names -> Is there a function that can do that?
+  // // }
+  // // else{
+  // //   alert("No siblings found")
+  // }
+  // //check if foundSiblings contains anything
 
-  return "Spouse: "+ [foundSpouse[0].firstName,  foundSpouse[0].lastName].join(" ") + "\nParent: "+ [foundParents[0].firstName,  foundParents[0].lastName].join(" ") + "\nParent: " + [foundParents[1].firstName, foundParents[1].lastName].join(" ") 
+  // //   let  siblingsNames = results.map(function(el){
+  // //     return siblings.firstName + ' ' + siblings.lastName
+  // // }
+
+  // return "Spouse: "+ [foundSpouse[0].firstName,  foundSpouse[0].lastName].join(" ") + "\nParent: "+ [foundParents[0].firstName,  foundParents[0].lastName].join(" ") + "\nParent: " + [foundParents[1].firstName, foundParents[1].lastName].join(" ") 
 }
 
 /**
