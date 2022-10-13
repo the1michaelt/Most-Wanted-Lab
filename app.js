@@ -155,29 +155,29 @@ function displayPerson(person) {
 
 function findPersonFamily(person, people){
   
+  // Found Spouse
+
   let spouseId = person.currentSpouse;
-  let foundSpouse; 
-  foundSpouse = people.filter(function(el){
+  let foundSpouse = people.filter(function(el){
     if (spouseId === el.id){
       return true;
   }
     else {
       return false;
   }})
-
-  return `${foundSpouse[0].firstName}` + " " + `${foundSpouse[0].lastName}`;
   
+  // Found Parent(s)
+
   let parentId = person.parents;
-  let foundParents; 
-  foundParents = people.filter(function(el){
-    if (parentId === el.id){
+  let foundParents = people.filter(function(el){
+    if (parentId.includes(el.id)){
       return true;
   }
     else {
       return false;
   }})
 
-  return `${foundParents[0].firstName}` + " " + `${foundParents[0].lastName}`+ "," + ${foundParents[1].firstName}` + " " + `${foundParents[1].lastName}`;
+  return "Spouse: "+ [foundSpouse[0].firstName,  foundSpouse[0].lastName].join(" ") + "\nParent: "+ [foundParents[0].firstName,  foundParents[0].lastName].join(" ") + "\nParent: " + [foundParents[1].firstName, foundParents[1].lastName].join(" ")
 }
 
 /**
