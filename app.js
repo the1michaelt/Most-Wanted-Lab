@@ -424,7 +424,7 @@ function searchByDob(people){
 }
 
 function searchByEyeColor(people){
-  let inputColor = promptFor("Please Enter person Eye Color \nOptions: 'Brown'\n 'Black'\n'Blue'\n'Hazel'", chars);
+  let inputColor = promptFor("Please Enter person Eye Color: \nBrown\nBlack\nBlue\nHazel", chars);
     let foundMatches = people.filter(function(el){
       if (el.eyeColor.toLowerCase() === inputColor.toLowerCase()){
         return true;
@@ -438,7 +438,7 @@ function searchByEyeColor(people){
 }
 
 function searchByHeight(people){
-  let inputHeight = promptFor("Please enter integer for person's height (Format: ##)", chars);
+  let inputHeight = Number(promptFor("Please enter integer for person's height (Format: ##)", chars));
     let foundMatches = people.filter(function(el){
       if (el.height === inputHeight){
         return true;
@@ -452,7 +452,7 @@ function searchByHeight(people){
 }
 
 function searchByWeight(people){
-  let inputWeight = promptFor("Please enter integer for person's weight (Format: ###", chars);
+  let inputWeight = Number(promptFor("Please enter integer for person's weight (Format: ###", chars));
     let foundMatches = people.filter(function(el){
       if (el.weight === inputWeight){
         return true;
