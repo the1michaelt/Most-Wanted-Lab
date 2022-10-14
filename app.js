@@ -158,6 +158,71 @@ function findPersonFamily(person, people) {
   findParent(person, people)
   findSibling(person, people)
 }
+
+// Found Spouse
+
+function findSpouse(person, people) {
+  let spouseId = person.currentSpouse;
+  let foundSpouse = people.filter(function (el) {
+      if (spouseId === el.id) {
+          return true;
+      }
+      else {
+          return false;
+      }
+  })
+
+      if (foundSpouse.length > 0) {
+          displayPeople(foundSpouse)
+      }
+      else {
+          alert("No spouse found")
+      }
+  }
+
+// Found Parent(s)
+
+function findParent(person, people) {
+  let parentId = person.parents;
+  let foundParents = people.filter(function (el) {
+      if (parentId.includes(el.id)) {
+          return true;
+      }
+      else {
+          return false;
+      }
+  })
+
+
+  if (foundParents.length > 0) {
+      displayPeople(foundParents)
+  }
+  else {
+      alert("No parent(s) found")
+  }
+}
+
+// Found Siblings
+
+function findSibling(person, people) {
+  let personParents = person.parents;
+  let foundSiblings = people.filter(function (potentialSibling) {
+      if (personParents.includes(potentialSibling.parents[0]) || personParents.includes(potentialSibling.parents[1])) {
+          return true;
+      }
+      else {
+          return false;
+      }
+  })
+
+  if (foundSiblings.length > 0) {
+      displayPeople(foundSiblings)
+  }
+  else {
+      alert("No siblings found")
+  }
+}
+
 // End of findPersonFamily()
 
 function findPersonDescendants(person, people){
@@ -237,67 +302,72 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-// Found Spouse
-
-function findSpouse(person, people) {
-  let spouseId = person.currentSpouse;
-  let foundSpouse = people.filter(function (el) {
-      if (spouseId === el.id) {
-          return true;
-      }
-      else {
-          return false;
-      }
-  })
-
-      if (foundSpouse.length > 0) {
-          displayPeople(foundSpouse)
-      }
-      else {
-          alert("No spouse found")
-      }
-  }
-
-// Found Parent(s)
-
-function findParent(person, people) {
-  let parentId = person.parents;
-  let foundParents = people.filter(function (el) {
-      if (parentId.includes(el.id)) {
-          return true;
-      }
-      else {
-          return false;
-      }
-  })
-
-
-  if (foundParents.length > 0) {
-      displayPeople(foundParents)
-  }
-  else {
-      alert("No parent(s) found")
-  }
+function searchByTraits(people){
+  let searchType = promptFor(
+    "Would you like to search by one trait? Enter '1'. Or search by two traits? Enter '2'.", chars);
+  let searchResults;
+    switch (searchType) {
+      case "1":
+        searchResults = searchByOneTrait(people);
+        break;
+      case "2":
+        searchResults = searchByTwoTraits(people);
+        break;
+      default:
+      // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
+        searchByTraits(people);
+        break;
+    }    
 }
 
-// Found Siblings
+function searchByOneTrait(people){
+  let userChoice = promptFor("Select your other search-by criteria:\nGender\nDOB\nHeight\nWeight\nEye Color\nOccupation", chars);
+  let foundMatches;
+  switch(userChoice){
+    case "Gender":
+      foundMatches = searchByGender(people);
+      displayPeople(foundMatches);
+      break;
+    case "Dob":
+      foundMatches = searchByDob(people);
+      displayPeople(foundMatches);
+      break;
+    case "Eye Color":
+      foundMatches = searchByEyeColor(people);
+      displayPeople(foundMatches);
+      break;
+    case "Height":
+      foundMatches = searchByHeight(people);
+      displayPeople(foundMatches);
+      break;
+    case "Weight":
+      foundMatches = searchByWeight(people);
+      displayPeople(foundMatches);
+      break;
+    case "Occupation":
+      foundMatches = searchByOccupation(people);
+      displayPeople(foundMatches);
+      break;
+    case "quit":
+      return;
+    default:
+    // Prompt user again. Another instance of recursion
+      return searchByOneTrait(people);
+  }
+}   
 
-function findSibling(person, people) {
-  let personParents = person.parents;
-  let foundSiblings = people.filter(function (potentialSibling) {
-      if (personParents.includes(potentialSibling.parents[0]) || personParents.includes(potentialSibling.parents[1])) {
+function searchByGender(people){
+  let genderChoice = promptFor("Are you searching for a 'male' or 'female", chars);
+      let foundMatches = people.filter(function(el){
+        if (el.gender.toLowerCase() === genderChoice.toLowerCase()){
           return true;
-      }
-      else {
+        }
+        else{
           return false;
       }
-  })
-
-  if (foundSiblings.length > 0) {
-      displayPeople(foundSiblings)
+    })
+  
+    return foundMatches;
   }
-  else {
-      alert("No siblings found")
-  }
-}
-
+  let searchResults2;
+  console.log('Search Results', searchResults2)
