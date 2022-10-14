@@ -397,28 +397,84 @@ function searchByMultiTraits(people){
 
 function searchByGender(people){
   let genderChoice = promptFor("Are you searching for a 'male' or 'female", chars);
-      let foundMatches = people.filter(function(el){
-        if (el.gender.toLowerCase() === genderChoice.toLowerCase()){
-          return true;
-        }
-        else{
-          return false;
+    let foundMatches = people.filter(function(el){
+      if (el.gender.toLowerCase() === genderChoice.toLowerCase()){
+        return true;
       }
-    })
+      else{
+        return false;
+    }
+  })
+  
+  return foundMatches;
+}
+
+function searchByDob(people){
+  let inputDob = promptFor("Please Enter person DOB (Format: m/d/yyyy)", chars);
+    let foundMatches = people.filter(function(el){
+      if (el.dob === inputDob){
+        return true;
+      }
+      else{
+        return false;
+    }
+  })
+  
+  return foundMatches;
+}
+
+function searchByEyeColor(people){
+  let inputColor = promptFor("Please Enter person Eye Color \nOptions: 'Brown'\n 'Black'\n'Blue'\n'Hazel'", chars);
+    let foundMatches = people.filter(function(el){
+      if (el.eyeColor.toLowerCase() === inputColor.toLowerCase()){
+        return true;
+      }
+      else{
+        return false;
+    }
+  })
   
     return foundMatches;
-  }
+}
 
-  function searchByDob(people){
-    let inputDob = promptFor("Please Enter person DOB (Format: m/d/yyyy)", chars);
-        let foundMatches = people.filter(function(el){
-          if (el.dob === inputDob){
-            return true;
-          }
-          else{
-            return false;
-        }
-      })
-    
-      return foundMatches;
+function searchByHeight(people){
+  let inputHeight = promptFor("Please enter integer for person's height (Format: ##)", chars);
+    let foundMatches = people.filter(function(el){
+      if (el.height === inputHeight){
+        return true;
+      }
+      else{
+        return false;
     }
+  })
+  
+  return foundMatches;
+}
+
+function searchByWeight(people){
+  let inputWeight = promptFor("Please enter integer for person's weight (Format: ###", chars);
+    let foundMatches = people.filter(function(el){
+      if (el.weight === inputWeight){
+        return true;
+      }
+      else{
+        return false;
+    }
+  })
+  
+  return foundMatches;
+}
+
+function searchByOccupation(people){
+  let inputOccupation = promptFor("Please enter person's occupation:\nProgrammer\nAssistant\nLandscaper\nNurse\nStudent\nArchitect\nDoctor\nPolitician", chars);
+    let foundMatches = people.filter(function(el){
+      if (el.occupation.toLowerCase() === inputOccupation.toLowerCase()){
+        return true;
+      }
+      else{
+        return false;
+    }
+  })
+  
+  return foundMatches;
+}
