@@ -304,14 +304,14 @@ function chars(input) {
 
 function searchByTraits(people){
   let searchType = promptFor(
-    "Would you like to search by one trait? Enter '1'. Or search by two traits? Enter '2'.", chars);
+    "To search by one trait: Enter '1' \nTo search by up to five traits: Enter '2'", chars);
   let searchResults;
     switch (searchType) {
       case "1":
         searchResults = searchByOneTrait(people);
         break;
       case "2":
-        searchResults = searchByTwoTraits(people);
+        searchResults = searchByMultiTraits(people);
         break;
       default:
       // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
@@ -355,6 +355,45 @@ function searchByOneTrait(people){
       return searchByOneTrait(people);
   }
 }   
+
+function searchByMultiTraits(people){
+  let userCount = prompt("How many criteria would you like to search? 1 - 5");
+  for (let i=1; i <= userCount; i++){
+    let userChoice = promptFor("Select your other search-by criteria:\nGender\nDOB\nHeight\nWeight\nEye Color\nOccupation", chars);
+    let foundMatches;
+    switch(userChoice){
+      case "Gender":
+        foundMatches = searchByGender(people);
+        displayPeople(foundMatches);
+        break;
+      case "DOB":
+        foundMatches = searchByDob(people);
+        displayPeople(foundMatches);
+        break;
+      case "Eye Color":
+        foundMatches = searchByEyeColor(people);
+        displayPeople(foundMatches);
+        break;
+      case "Height":
+        foundMatches = searchByHeight(people);
+        displayPeople(foundMatches);
+        break;
+      case "Weight":
+        foundMatches = searchByWeight(people);
+        displayPeople(foundMatches);
+        break;
+      case "Occupation":
+        foundMatches = searchByOccupation(people);
+        displayPeople(foundMatches);
+        break;
+      case "quit":
+        return;
+      default:
+      // Prompt user again. Another instance of recursion
+        return searchByMultiTraits(people);
+    }
+  }
+}
 
 function searchByGender(people){
   let genderChoice = promptFor("Are you searching for a 'male' or 'female", chars);
