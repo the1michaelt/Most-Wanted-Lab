@@ -328,7 +328,7 @@ function searchByOneTrait(people){
       foundMatches = searchByGender(people);
       displayPeople(foundMatches);
       break;
-    case "Dob":
+    case "DOB":
       foundMatches = searchByDob(people);
       displayPeople(foundMatches);
       break;
@@ -369,5 +369,17 @@ function searchByGender(people){
   
     return foundMatches;
   }
-  let searchResults2;
-  console.log('Search Results', searchResults2)
+
+  function searchByDob(people){
+    let inputDob = promptFor("Please Enter person DOB (Format: m/d/yyyy)", chars);
+        let foundMatches = people.filter(function(el){
+          if (el.dob === inputDob){
+            return true;
+          }
+          else{
+            return false;
+        }
+      })
+    
+      return foundMatches;
+    }
