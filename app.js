@@ -195,7 +195,7 @@ function findChildren(person, people){
     alert("No descendant(s) found")
   }
 }
-//  array.concat
+// End of findPersonDescendants()
 
 /**
  * This function's purpose is twofold:
