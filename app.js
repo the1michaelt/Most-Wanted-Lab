@@ -188,7 +188,8 @@ function findChildren(person, people){
   }
 
   if (foundChildren.length > 0 && grandChild.length > 0) {
-    displayPeople(foundChildren, grandChild)
+    foundChildren = foundChildren.concat(grandChild)
+    displayPeople(foundChildren)
   }
   else {
     alert("No descendant(s) found")
