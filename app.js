@@ -175,17 +175,19 @@ function findChildren(person, people){
       }
   })
 
-  let childofChild = foundChildren.id;
-  let grandChild = people.map(function (potentialGrandChild) {
-    if (potentialGrandChild.foundParents.includes(childofChild)) {
-        return true;
-      }
-      else {
-        return false;
-      }
-  })
+  let grandChild;
+  for(let i = 0; i <foundChildren.length; i++){
+    grandChild = people.filter(function (potentialGrandChild) {
+      if (potentialGrandChild.parents.includes(foundChildren[i].id)) {
+          return true;
+        }
+        else {
+          return false;
+        }
+    })
+  }
 
-  if (foundChildren.length > 0 && grandChild > 0) {
+  if (foundChildren.length > 0 && grandChild.length > 0) {
     displayPeople(foundChildren, grandChild)
   }
   else {
