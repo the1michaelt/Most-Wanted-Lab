@@ -95,6 +95,7 @@ function mainMenu(person, people) {
 }
 // End of mainMenu()
 
+
 /**
  * This function is used when searching the people collection by
  * a person-object's firstName and lastName properties.
@@ -274,7 +275,7 @@ function chars(input) {
 
 function searchByTraits(people) {
   let searchType = promptFor(
-    "Search by one(1) trait: Enter '1'\nSearch by up to five(5) traits: Enter '2'", chars);
+    "Search by one(1) trait: \nEnter '1'\nSearch by up to five(5) traits: \nEnter '2'", chars);
   let searchResults;
   switch (searchType) {
     case "1":
@@ -291,7 +292,7 @@ function searchByTraits(people) {
 }
 
 function searchByOneTrait(people) {
-  let userChoice = promptFor("Select your search criterion:\nGender, DOB, Height, Weight, Eye Color, or Occupation\nQuit", chars).toLowerCase();
+  let userChoice = promptFor("Select your search trait:\nGender, DOB, Height, Weight, Eye Color, or Occupation\nQuit", chars).toLowerCase();
   let foundMatches;
   switch (userChoice) {
     case "gender":
@@ -327,10 +328,10 @@ function searchByOneTrait(people) {
 }
 
 function searchByMultiTraits(people) {
-  let userCount = Number(prompt("How many criteria would you like to search?\nPlease choose 2, 3, 4, or 5"));
-  if (userCount % 1 === true && userCount >= 2 && userCount < 5) {
+  let userCount = Number(prompt("How many of the person's traits would you like to search?\nPlease choose 2, 3, 4, or 5"));
+  if (userCount >= 2 && userCount < 5) {
     for (let i = 1; i <= userCount; i++) {
-      let userChoice = promptFor("Select your search criterion:\nGender, DOB, Height, Weight, Eye Color, or Occupation\nQuit", chars).toLowerCase();
+      let userChoice = promptFor("Select your search trait:\nGender, DOB, Height, Weight, Eye Color, or Occupation\nQuit", chars).toLowerCase();
       let foundMatches;
       switch (userChoice) {
         case "gender":
@@ -427,17 +428,19 @@ function searchByHeight(people) {
 
 function searchByWeight(people) {
   let inputWeight = Number(promptFor("Please enter an integer for the person's weight (format: ###)", chars));
-  let foundMatches = people.filter(function (el) {
-    if (el.weight === inputWeight) {
-      return true;
-    }
-    else {
-      return false;
+  let foundMatches = people.filter(function(el){
+      if (el.weight === inputWeight){
+        return true;
+      }
+      else{
+        return false;
     }
   })
-
+  
   return foundMatches;
 }
+ 
+
 
 function searchByOccupation(people) {
   let inputOccupation = promptFor("Please enter the person's occupation:\nArchitect, Assistant, Doctor, Landscaper, Nurse, Politician, Programmer,\nor Student", chars);
