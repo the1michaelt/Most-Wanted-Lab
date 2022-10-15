@@ -19,7 +19,7 @@ function app(people) {
   // promptFor() is a custom function defined below that helps us prompt and validate input more easily
   // Note that we are chaining the .toLowerCase() immediately after the promptFor returns its value
   let searchType = promptFor(
-    "Do you know the name of the person you are looking for?\nEnter 'yes' or 'no'",
+    "Do you know the name of the person for whom you are searching?\nEnter 'yes' or 'no'",
     yesNo
   ).toLowerCase();
   let searchResults;
@@ -219,7 +219,7 @@ function findSibling(person, people) {
     displayPeople(foundSiblings)
   }
   else {
-    alert("No siblings found")
+    alert("No sibling(s) found")
   }
 }
 
@@ -327,46 +327,50 @@ function searchByOneTrait(people) {
 }
 
 function searchByMultiTraits(people) {
-  let userCount = prompt("How many criteria would you like to search?\nChoose between 2 and 5");
-  for (let i = 1; i <= userCount; i++) {
-    let userChoice = promptFor("Select your search criterion:\nGender, DOB, Height, Weight, Eye Color, or Occupation\nQuit", chars).toLowerCase();
-    let foundMatches;
-    switch (userChoice) {
-      case "gender":
-        foundMatches = searchByGender(people);
-        displayPeople(foundMatches);
-        break;
-      case "dob":
-        foundMatches = searchByDob(people);
-        displayPeople(foundMatches);
-        break;
-      case "eye color":
-        foundMatches = searchByEyeColor(people);
-        displayPeople(foundMatches);
-        break;
-      case "height":
-        foundMatches = searchByHeight(people);
-        displayPeople(foundMatches);
-        break;
-      case "weight":
-        foundMatches = searchByWeight(people);
-        displayPeople(foundMatches);
-        break;
-      case "occupation":
-        foundMatches = searchByOccupation(people);
-        displayPeople(foundMatches);
-        break;
-      case "quit":
-        return;
-      default:
-        // Prompt user again. Another instance of recursion
-        return searchByMultiTraits(people);
-    }
+  let userCount = Number(prompt("How many criteria would you like to search?\nPlease choose 2, 3, 4, or 5"));
+  if (userCount % 1 === true && userCount >= 2 && userCount < 5) {
+    for (let i = 1; i <= userCount; i++) {
+      let userChoice = promptFor("Select your search criterion:\nGender, DOB, Height, Weight, Eye Color, or Occupation\nQuit", chars).toLowerCase();
+      let foundMatches;
+      switch (userChoice) {
+        case "gender":
+          foundMatches = searchByGender(people);
+          displayPeople(foundMatches);
+          break;
+        case "dob":
+          foundMatches = searchByDob(people);
+          displayPeople(foundMatches);
+          break;
+        case "eye color":
+          foundMatches = searchByEyeColor(people);
+          displayPeople(foundMatches);
+          break;
+        case "height":
+          foundMatches = searchByHeight(people);
+          displayPeople(foundMatches);
+          break;
+        case "weight":
+          foundMatches = searchByWeight(people);
+          displayPeople(foundMatches);
+          break;
+        case "occupation":
+          foundMatches = searchByOccupation(people);
+          displayPeople(foundMatches);
+          break;
+        case "quit":
+          return;
+        default:
+          // Prompt user again. Another instance of recursion
+          return searchByMultiTraits(people);
+      }
+    };
   }
+  else
+    return searchByMultiTraits(people)
 }
 
 function searchByGender(people) {
-  let genderChoice = promptFor("Please enter for your gender search:\nmale or female", chars);
+  let genderChoice = promptFor("Please enter 'male' or 'female' for your gender search", chars);
   let foundMatches = people.filter(function (el) {
     if (el.gender.toLowerCase() === genderChoice.toLowerCase()) {
       return true;
@@ -394,7 +398,7 @@ function searchByDob(people) {
 }
 
 function searchByEyeColor(people) {
-  let inputColor = promptFor("Please enter the person's eye color: \nBlack, Blue, Brown, Hazel", chars);
+  let inputColor = promptFor("Please enter the person's eye color: \nBlack, Blue, Brown, or Hazel", chars);
   let foundMatches = people.filter(function (el) {
     if (el.eyeColor.toLowerCase() === inputColor.toLowerCase()) {
       return true;
