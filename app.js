@@ -229,37 +229,7 @@ function findPersonDescendants(person, people){
   findChildren(person, people)
 }
 
-function findChildren(person, people){
-  let childParent = person.id;
-  let foundChildren = people.filter(function (potentialChild) {
-    if (potentialChild.parents.includes(childParent)) {
-        return true;
-      }
-      else {
-        return false;
-      }
-  })
 
-  let grandChild;
-  for(let i = 0; i <foundChildren.length; i++){
-    grandChild = people.filter(function (potentialGrandChild) {
-      if (potentialGrandChild.parents.includes(foundChildren[i].id)) {
-          return true;
-        }
-        else {
-          return false;
-        }
-    })
-  }
-
-  if (foundChildren.length > 0 && grandChild.length > 0) {
-    foundChildren = foundChildren.concat(grandChild)
-    displayPeople(foundChildren)
-  }
-  else {
-    alert("No descendant(s) found")
-  }
-}
 // End of findPersonDescendants()
 
 /**
@@ -477,4 +447,40 @@ function searchByOccupation(people){
   })
   
   return foundMatches;
+}
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
+
+function findChildren(person, people) {
+  let childParent = person.id;
+  let foundChildren = people.filter(function (potentialChild) {
+    if (potentialChild.parents.includes(childParent)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+
+  let grandChild;
+  for (let i = 0; i < foundChildren.length; i++) {
+    grandChild = people.filter(function (potentialGrandChild) {
+      if (potentialGrandChild.parents.includes(foundChildren[i].id)) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    })
+  }
+
+  if (foundChildren.length > 0 && grandChild.length > 0) {
+    foundChildren = foundChildren.concat(grandChild)
+    displayPeople(foundChildren)
+  }
+  else {
+    alert("No descendant(s) found")
+  }
 }
