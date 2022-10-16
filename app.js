@@ -227,7 +227,9 @@ function findSibling(person, people) {
 // End of findPersonFamily()
 
 function findPersonDescendants(person, people) {
-  findChildren(person, people)
+   let findPerson = findChildren(person, people)
+  let findGrand = findGrandchild(findPerson, people)
+  let findDescendants = descendantsList(findPerson, findGrand)
 }
 
 
@@ -470,7 +472,11 @@ function findChildren(person, people) {
       return false;
     }
   })
-
+  return foundChildren;
+}
+ 
+function findGrandchild(findPerson, people) {
+  let foundChildren = findPerson;
   let grandChild;
   for (let i = 0; i < foundChildren.length; i++) {
     grandChild = people.filter(function (potentialGrandChild) {
@@ -482,8 +488,13 @@ function findChildren(person, people) {
       }
     })
   }
+  return grandChild
+}
 
-  if (foundChildren.length > 0 && grandChild.length > 0) {
+function descendantsList(findPerson, findGrand) {
+  let foundChildren = findPerson;
+  let grandChild = findGrand;
+  if (foundChildren.length > 0 || grandChild.length > 0) {
     foundChildren = foundChildren.concat(grandChild)
     displayPeople(foundChildren)
   }
