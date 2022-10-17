@@ -272,60 +272,6 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-// function searchByTraits(people) {
-//   let searchType = promptFor(
-//     "Search by one(1) trait: \nEnter '1'\nSearch by up to five(5) traits: \nEnter '2'", chars);
-//   let searchResults;
-//   switch (searchType) {
-//     case "1":
-//       searchResults = searchByOneTrait(people);
-//       break;
-//     case "2":
-//       searchResults = searchByMultiTraits(people);
-//       break;
-//     default:
-//       // Re-initializes the app() if neither case was hit above. This is an instance of recursion.
-//       searchByTraits(people);
-//       break;
-//   }
-// }
-
-// function searchByOneTrait(people) {
-//   let userChoice = promptFor("Select your search trait:\nGender, DOB, Height, Weight, Eye Color, or Occupation\nQuit", chars).toLowerCase();
-//   let foundMatches;
-//   switch (userChoice) {
-//     case "gender":
-//       foundMatches = searchByGender(people);
-//       displayPeople(foundMatches);
-//       break;
-//     case "dob":
-//       foundMatches = searchByDob(people);
-//       displayPeople(foundMatches);
-//       break;
-//     case "eye color":
-//       foundMatches = searchByEyeColor(people);
-//       displayPeople(foundMatches);
-//       break;
-//     case "height":
-//       foundMatches = searchByHeight(people);
-//       displayPeople(foundMatches);
-//       break;
-//     case "weight":
-//       foundMatches = searchByWeight(people);
-//       displayPeople(foundMatches);
-//       break;
-//     case "occupation":
-//       foundMatches = searchByOccupation(people);
-//       displayPeople(foundMatches);
-//       break;
-//     case "quit":
-//       return;
-//     default:
-//       // Prompt user again. Another instance of recursion
-//       return searchByOneTrait(people);
-//   }
-// }
-
 function searchByTraits(people) {
   let userCount = Number(prompt("By how many of the person's traits would you like to search?\nTo search a single trait, enter '1'\nTo search more, please enter '2', '3', '4', or '5'"));
   if (userCount >= 1 && userCount < 5) {
