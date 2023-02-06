@@ -1,12 +1,17 @@
 # Most_Wanted_Project
-# Team 
-Iggy Pierre
-Lucy Ruiz
+## Team 
+Iggy Pierre,
+Lucy Ruiz,
 Michael Thompson
 
-Tech Stack: JavaScript
+## Technologies
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-# Main Stories
+## Testing
+![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white) 
+
+## Main Stories
  
 1. As a developer, I want to make at least 15 consistent commits with good, descriptive messages.
 
@@ -26,10 +31,12 @@ Tech Stack: JavaScript
 7. As a developer, I want to run validation on any user input, ensuring that a user is re-prompted when they provide invalid input.
 Tackle this user story LAST!
 
-# Bonus Stories
+## Bonus Stories
 
 1. As a user, after locating a person, I want to see only that person’s descendants (display the names of the descendants), using recursion.
 
-# End Result
+## End Result
 
 The finished application will be a single website with a button that, when clicked, will allow the user to interact with the dataset. The user will be able to search by name or by traits, and when a person is found, they will be able to see information about the person, along with their family members and descendants.
+
+
